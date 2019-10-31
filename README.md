@@ -19,3 +19,19 @@ prompt pure
 EOF
 chsh -s $(which zsh)
 ```
+
+# Change WM to i3
+
+```
+sudo dnf install -y lightdm lightdm-gtk-greeter-settings
+sudo systemctl disable gdm
+sudo systemctl enable lightdm
+
+sudo dnf install -y @xfce-desktop-environment i3 i3lock
+curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest \
+	| jq -r '.assets[].browser_download_url' \
+	| grep rpm \
+	| tail -n1 \
+	| wget -O /tmp/ulauncher.rpm -i -
+sudo dnf install /tmp/ulauncher.rpm
+```
