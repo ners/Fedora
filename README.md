@@ -3,7 +3,9 @@ Fedora setup
 
 # Update the system
 ```sh
-sudo dnf -y update
+sudo dnf upgrade --refresh -y
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf system-upgrade download --releasever=32
 ```
 
 # Install basic tools
