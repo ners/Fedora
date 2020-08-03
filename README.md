@@ -38,6 +38,7 @@ PURE_PROMPT_SYMBOL=‣
 autoload -U promptinit; promptinit
 prompt pure
 EOF
+touch ~/.profile
 chsh -s $(which zsh)
 ```
 
