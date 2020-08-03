@@ -2,6 +2,11 @@ Fedora setup
 ============
 
 # Update the system
+If using the latest version:
+```sh
+sudo dnf upgrade -y
+```
+If using an older version:
 ```sh
 sudo dnf upgrade --refresh -y
 sudo dnf install dnf-plugin-system-upgrade
@@ -11,8 +16,11 @@ sudo dnf system-upgrade download --releasever=32
 # Install basic tools
 ```sh
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y curl dnf-plugins-core entr exfat-utils expect fuse-exfat git httpie jq make moreutils util-linux-user vim wget
-sudo dnf install -y geary mpv telegram-desktop the_silver_searcher transmission-gtk vim-X11
+sudo dnf install -y curl dnf-plugins-core entr expect fuse-exfat fuse-sshfs git httpie jq make moreutils the_silver_searcher util-linux-user vim wget
+```
+Optional GUI tools:
+```sh
+sudo dnf install -y geary mpv telegram-desktop transmission-gtk vim-X11
 ```
 
 # Change shell to ZSH
@@ -48,15 +56,11 @@ curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest \
 sudo dnf install /tmp/ulauncher.rpm
 ```
 
-# Install Docker
-```sh
-sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io
-sudo usermod -a -G docker $USER
-```
-
 # Install Haskell
 ```sh
 sudo dnf copr enable -y petersen/stack
 sudo dnf install -y haskell-platform stack
 ```
+
+# Install Docker
+Do not use Docker. Use Podman instead. It is preinstalled with Fedora Workstation.
