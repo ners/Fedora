@@ -16,7 +16,7 @@ sudo dnf system-upgrade download --releasever=32
 # Install basic tools
 ```sh
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y curl dnf-plugins-core entr expect fuse-exfat fuse-sshfs git httpie jq make moreutils the_silver_searcher util-linux-user vim wget
+sudo dnf install -y curl dnf-plugins-core entr expect fuse-exfat fuse-sshfs git git-credential-libsecret httpie jq make moreutils the_silver_searcher util-linux-user vim wget
 ```
 Optional GUI tools:
 ```sh
@@ -65,3 +65,17 @@ sudo dnf install -y haskell-platform stack
 
 # Install Docker
 Do not use Docker. Use Podman instead. It is preinstalled with Fedora Workstation.
+
+# Set up Vim
+```sh
+sudo dnf install -y yarnpkg libicu-devel ncurses-devel zlib-devel 
+cd ~/.vim/pack/vendor/start
+for p in preservim/nerdtree dense-analysis/ale neoclide/coc.nvim tomasiser/vim-code-dark neovimhaskell/haskell-vim ; do
+    git clone --depth 1 "https://github.com/$p.git"
+done
+vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
+yarn --cwd coc.nvim
+git clone https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
+cd /tmp/haskell-language-server
+stack install.hs hls-8.8.3
+```
