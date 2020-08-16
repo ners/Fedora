@@ -1,0 +1,14 @@
+{
+    "clangd": {
+        "enabled": true,
+        "arguments": ["-compile-commands-dir=build"]
+    },
+    "languageserver": {
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+            "filetypes": ["haskell", "lhaskell"]
+        }
+    }
+}

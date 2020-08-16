@@ -1,0 +1,11 @@
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.profile
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then
+    source ~/.nix-profile/etc/profile.d/nix.sh
+fi
+
+PURE_CMD_MAX_EXEC_TIME=1
+PURE_PROMPT_SYMBOL=‣
+autoload -U promptinit; promptinit
+prompt pure
+
