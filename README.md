@@ -19,7 +19,7 @@ sudo dnf install -y curl dnf-plugins-core entr expect fuse-exfat fuse-sshfs git 
 ```
 Optional GUI tools:
 ```sh
-sudo dnf install -y geary mpv telegram-desktop transmission-gtk transmission-remote-gtk vim-X11
+sudo dnf install -y geary gnome-tweaks mpv telegram-desktop transmission-gtk transmission-remote-gtk vim-X11 yaru-theme
 ```
 
 # Change shell to ZSH
@@ -50,12 +50,23 @@ for f in .gitconfig .gitignore ; do cp $f ~/$f ; done
 
 # Set up Vim
 ```sh
-sudo dnf install -y yarnpkg libicu-devel ncurses-devel zlib-devel 
+sudo dnf install -y yarnpkg libicu-devel ncurses-devel zlib-devel
 mkdir -p ~/.vim/ftplugin ~/.vim/pack/vendor/start
+
 cd ~/.vim/pack/vendor/start
-for p in preservim/nerdtree dense-analysis/ale neoclide/coc.nvim tomasiser/vim-code-dark neovimhaskell/haskell-vim ; do
-    git clone --depth 1 "https://github.com/$p.git"
-done
+plugins=(
+chriskempson/base16-vim
+neoclide/coc.nvim
+neovimhaskell/haskell-vim
+cohama/lexima.vim
+preservim/nerdtree
+flrnd/plastic.vim
+tomasiser/vim-code-dark
+ryanoasis/vim-devicons
+tiagofumo/vim-nerdtree-syntax-highlight
+)
+for p in ${plugins[@]}; do git clone --depth 1 "https://github.com/$p.git"; done
+
 vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
 yarn --cwd coc.nvim
 git clone https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
