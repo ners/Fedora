@@ -6,9 +6,10 @@ If using the latest version:
 ```sh
 sudo dnf upgrade --refresh -y
 source /etc/os-release
-if [ "$VERSION_ID" -lt 32 ] ; then
+VERSION=33
+if [ "$VERSION_ID" -lt $VERSION ] ; then
     sudo dnf install -y dnf-plugin-system-upgrade
-    sudo dnf system-upgrade download --releasever=32
+    sudo dnf system-upgrade download --releasever=$VERSION
 fi
 ```
 
