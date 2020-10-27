@@ -9,7 +9,8 @@ source /etc/os-release
 VERSION=33
 if [ "$VERSION_ID" -lt $VERSION ] ; then
     sudo dnf install -y dnf-plugin-system-upgrade
-    sudo dnf system-upgrade download --releasever=$VERSION
+    yes | sudo dnf system-upgrade download --releasever=$VERSION
+    yes | sudo dnf system-upgrade reboot
 fi
 ```
 
