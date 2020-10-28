@@ -83,11 +83,5 @@ sudo dnf install -y lightdm lightdm-gtk-greeter-settings
 sudo systemctl disable gdm
 sudo systemctl enable lightdm
 
-sudo dnf install -y blueman compton i3 i3lock ImageMagick network-manager-applet scrot @xfce-desktop-environment
-curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest \
-	| jq -r '.assets[].browser_download_url' \
-	| grep rpm \
-	| tail -n1 \
-	| wget -O /tmp/ulauncher.rpm -i -
-sudo dnf install /tmp/ulauncher.rpm
+sudo dnf install -y blueman compton i3 i3lock ImageMagick network-manager-applet scrot @xfce-desktop-environment ulauncher
 ```
