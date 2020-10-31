@@ -24,6 +24,16 @@ Optional GUI tools:
 sudo dnf install -y geary gnome-tweaks mpv telegram-desktop transmission-gtk transmission-remote-gtk vim-X11 yaru-theme
 ```
 
+Optional nVidia driver:
+```sh
+sudo dnf install -y gcc kernel-headers kernel-devel akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-libs xorg-x11-drv-nvidia-libs.i686
+sleep 300
+sudo akmods --force
+sudo dracut --force
+sudo cp -p /usr/share/X11/xorg.conf.d/nvidia.conf /etc/X11/xorg.conf.d/nvidia.conf
+sed -i 's|EndSection|\tOption "PrimaryGPU" "yes"\nEndSection|' /etc/X11/xorg.conf.d/nvidia.conf
+```
+
 # Change shell to ZSH
 ```sh
 sudo dnf install -y zsh zsh-syntax-highlighting
