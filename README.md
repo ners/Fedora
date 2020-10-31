@@ -36,10 +36,7 @@ for f in .zshrc .zshrc.local .profile ; do cp $f ~/$f ; done
 
 # Install Haskell
 ```sh
-sudo dnf copr enable -y petersen/stack
-sudo dnf install -y stack
-stack install hlint
-stack install hdevtools
+curl -sSL https://get.haskellstack.org/ | sh
 ```
 
 # Install Docker
