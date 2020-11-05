@@ -65,12 +65,10 @@ mkdir -p ~/.vim/ftplugin ~/.vim/pack/vendor/start
 cd ~/.vim/pack/vendor/start
 plugins=(
 chriskempson/base16-vim
+preservim/nerdtree
 neoclide/coc.nvim
 neovimhaskell/haskell-vim
 cohama/lexima.vim
-preservim/nerdtree
-flrnd/plastic.vim
-tomasiser/vim-code-dark
 ryanoasis/vim-devicons
 tiagofumo/vim-nerdtree-syntax-highlight
 )
