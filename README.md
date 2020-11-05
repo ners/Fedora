@@ -82,6 +82,14 @@ stack install.hs hls-8.8.3
 find .vim -type f | while read f ; do cp $f ~/$f ; done
 ```
 
+Optional VS Code:
+```sh
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+sudo dnf check-update
+sudo dnf install code
+```
+
 # Change WM to i3
 ```sh
 sudo dnf install -y lightdm lightdm-gtk-greeter-settings
