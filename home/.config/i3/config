@@ -23,7 +23,9 @@ font pango:Roboto Mono 10
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id ulauncher --no-window-shadow
+exec --no-startup-id copyq
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -38,8 +40,17 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start a browser
+bindsym $mod+f exec firefox
+
+# start an editor
+bindsym $mod+g exec i3-sensible-editor
+
 # kill focused window
 bindsym $mod+apostrophe kill
+
+# lock the screen
+bindsym $mod+l exec ~/.config/i3/fuzzy-lock.sh
 
 # start dmenu (a program launcher)
 # bindsym $mod+space exec dmenu_run
@@ -169,7 +180,7 @@ hide_edge_borders vertical
 for_window [class="^.*"] border pixel 1
 for_window [class="(?i)ulauncher"] floating enable, border pixel 0
 
-# base16 tomorrow night
+# Base16 Default Dark
 set $base00 #181818
 set $base01 #282828
 set $base02 #383838
@@ -187,6 +198,7 @@ set $base0D #7cafc2
 set $base0E #ba8baf
 set $base0F #a16946
 
+# Basic bar configuration using the Base16 variables.
 bar
 {
 	status_command i3status -c ~/.config/i3/status.conf
@@ -205,8 +217,10 @@ bar
 		binding_mode        $base00 $base0A $base00
 	}
 }
+
+# Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused          $base05 $base0D $base00 $base0D $base0C
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
