@@ -1,13 +1,15 @@
 [user]
 	name = ners
 	email = ners@gmx.ch
-[push]
-	default = current
 [core]
 	excludesfile = ~/.gitignore
-[credential]
-	helper = libsecret
+[pull]
+	rebase = false
+[push]
+	default = current
 [commit]
 	gpgsign = true
+[credential]
+	helper = libsecret
 [includeIf "gitdir:~/Work/"]
 	path = ~/Work/.gitconfig

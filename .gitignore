@@ -4,3 +4,15 @@
 *.iml
 *.out
 *.pdf
+
+!.config
+!.gitconfig
+!.gitignore
+!.gvimrc
+!.profile
+!.vim
+!.vimrc
+!.xinitrc
+!.Xresources
+!.zshrc
+!.zshrc.local

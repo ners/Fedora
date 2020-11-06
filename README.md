@@ -21,7 +21,7 @@ sudo dnf install -y curl dnf-plugins-core direnv entr expect fuse-exfat fuse-ssh
 ```
 ## Optional GUI tools:
 ```sh
-sudo dnf install -y geary gnome-tweaks mpv telegram-desktop transmission-gtk transmission-remote-gtk vim-X11 yaru-theme
+sudo dnf install -y geary gnome-tweaks mpv telegram-desktop transmission-gtk transmission-remote-gtk vim-X11 yaru-theme clipq
 ```
 
 ## Optional nVidia driver:
