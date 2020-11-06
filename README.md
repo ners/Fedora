@@ -17,7 +17,7 @@ fi
 # Install basic tools
 ```sh
 sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y curl dnf-plugins-core direnv entr expect fuse-exfat fuse-sshfs git git-credential-libsecret httpie jq make moreutils the_silver_searcher util-linux-user vim wget
+sudo dnf install -y boxes curl dnf-plugins-core direnv entr expect fuse-exfat fuse-sshfs git git-credential-libsecret httpie jq make moreutils the_silver_searcher util-linux-user vim wget
 ```
 ## Optional GUI tools:
 ```sh
@@ -30,7 +30,7 @@ sudo dnf install -y gcc kernel-headers kernel-devel akmod-nvidia xorg-x11-drv-nv
 sleep 60
 sudo akmods --force
 sudo dracut --force
-sudo cp -p /usr/share/X11/xorg.conf.d/nvidia.conf /etc/X11/xorg.conf.d/nvidia.conf
+sudo cp home/-p /usr/share/X11/xorg.conf.d/nvidia.conf /etc/X11/xorg.conf.d/nvidia.conf
 sudo sed -i 's|EndSection|\tOption "PrimaryGPU" "yes"\nEndSection|' /etc/X11/xorg.conf.d/nvidia.conf
 ```
 
@@ -41,7 +41,7 @@ git clone https://github.com/sindresorhus/pure.git /tmp/pure
 sudo cp /tmp/pure/async.zsh /usr/share/zsh/site-functions/async
 sudo cp /tmp/pure/pure.zsh /usr/share/zsh/site-functions/prompt_pure_setup
 chsh -s $(which zsh)
-for f in .zshrc .zshrc.local .profile ; do cp $f ~/$f ; done
+for f in .zshrc .zshrc.local .profile ; do cp home/$f ~/$f ; done
 ```
 
 # Install Haskell
@@ -54,7 +54,7 @@ Do not use Docker. Use Podman instead. It comes preinstalled with Fedora Worksta
 
 # Set up Git
 ```sh
-for f in .gitconfig .gitignore ; do cp $f ~/$f ; done
+for f in .gitconfig .gitignore ; do cp home/$f ~/$f ; done
 ```
 
 # Set up Vim
@@ -79,7 +79,7 @@ yarn --cwd coc.nvim
 git clone https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
 cd /tmp/haskell-language-server
 stack install.hs hls-8.8.3
-find .vim -type f | while read f ; do cp $f ~/$f ; done
+find .vim -type f | while read f ; do cp home/$f ~/$f ; done
 ```
 
 ## Optional VS Code:

@@ -3,6 +3,8 @@
 eval "$(direnv hook zsh)"
 
 alias open=xdg-open
+alias ls='ls -a --color=auto'
+alias diff='diff --color=auto'
 
 export PATH="$PATH:$HOME/.local/bin"
 
