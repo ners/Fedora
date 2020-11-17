@@ -25,6 +25,7 @@ sudo dnf install -y geary gnome-tweaks mpv telegram-desktop transmission-gtk tra
 ```
 
 ## Optional nVidia driver:
+⚠️ Warning: the official nVidia driver is terrible for system stability. Expect your battery life to suffer and future updates to break your system. Try to avoid the driver if you can, and next time you buy a computer, nVidia as a whole.
 ```sh
 sudo dnf install -y gcc kernel-headers kernel-devel akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-libs xorg-x11-drv-nvidia-libs.i686
 sleep 60
