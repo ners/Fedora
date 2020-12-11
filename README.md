@@ -2,7 +2,10 @@ Fedora setup
 ============
 
 # Update the system
-If using the latest version:
+If you're on a decent connection, speed up DNF updates:
+```sh
+echo max_parallel_downloads=16 | sudo tee -a /etc/dnf/dnf.conf
+```
 ```sh
 sudo dnf upgrade --refresh -y
 source /etc/os-release
