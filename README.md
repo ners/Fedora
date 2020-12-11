@@ -102,3 +102,13 @@ sudo systemctl enable lightdm
 
 sudo dnf install -y blueman compton i3 i3lock ImageMagick network-manager-applet scrot @xfce-desktop-environment ulauncher
 ```
+
+# Install Wine
+```sh
+sudo dnf install -y wine winetricks
+sudo winetricks --self-update
+```
+Speed up winetricks downloads:
+```sh
+sudo sed -i 's|torify} aria2c|& -x16 -s16 |' /usr/bin/winetricks
+```
