@@ -2,8 +2,10 @@
 
 eval "$(direnv hook zsh)"
 
-alias open=xdg-open
-alias ls='ls -a --color=auto'
+function open() { nohup xdg-open &>/dev/null $* & disown }
+
+alias makevars='gmake -pn | grep -A1 "^# makefile"| grep -v "^#\|^--" | sort | uniq'
+alias ls='ls -A --color=auto'
 alias diff='diff --color=auto'
 
 export PATH="$PATH:$HOME/.local/bin"
@@ -47,7 +49,7 @@ function gitr()
 
 function shake()
 {
-    mkdir -p .shake
-    ghc --make Shake.hs -rtsopts -threaded -with-rtsopts=-I0 -outputdir=.shake -o .shake/build
-    .shake/build -j$(nproc) --progress --color --report=.shake/report.html
+	mkdir -p .shake
+	stack ghc -- -o .shake/shake -odir .shake -hidir .shake Shake.hs && \
+	.shake/shake --progress --color --report=.shake/report.html $@
 }

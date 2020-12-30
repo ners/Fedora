@@ -20,11 +20,11 @@ fi
 # Install basic tools
 ```sh
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf install -y boxes curl dnf-plugins-core direnv entr expect fuse-exfat fuse-sshfs git git-credential-libsecret httpie jq make moreutils the_silver_searcher util-linux-user vim wget
+sudo dnf install -y aria2 boxes curl dnf-plugins-core direnv entr expect fuse-exfat fuse-sshfs git git-credential-libsecret httpie jq make moreutils the_silver_searcher util-linux-user neovim wget
 ```
 ## Optional GUI tools:
 ```sh
-sudo dnf install -y geary gnome-tweaks mpv telegram-desktop transmission-gtk transmission-remote-gtk vim-X11 yaru-theme clipq
+sudo dnf install -y kitty geary gnome-tweaks mpv novim-qt telegram-desktop transmission-gtk transmission-remote-gtk yaru-theme
 ```
 
 ## Optional nVidia driver:
@@ -53,6 +53,13 @@ for f in .zshrc .zshrc.local .profile ; do cp home/$f ~/$f ; done
 curl -sSL https://get.haskellstack.org/ | sh
 ```
 
+## Install HLS for IDE integration
+```sh
+git clone https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
+cd /tmp/haskell-language-server
+stack install.hs hls-8.8.4
+```
+
 # Install Docker
 Do not use Docker. Use Podman instead. It comes preinstalled with Fedora Workstation.
 
@@ -61,32 +68,33 @@ Do not use Docker. Use Podman instead. It comes preinstalled with Fedora Worksta
 for f in .gitconfig .gitignore ; do cp home/$f ~/$f ; done
 ```
 
-# Set up Vim
+# Set up Neovim
 ```sh
+cp -r home/.config/nvim ~/.config/nvim
+
 sudo dnf install -y yarnpkg libicu-devel ncurses-devel zlib-devel
+mkdir -p ~/.local/share/nvim/site/pack/github/start
 mkdir -p ~/.vim/ftplugin ~/.vim/pack/vendor/start
 
-cd ~/.vim/pack/vendor/start
+cd ~/.local/share/nvim/site/pack/github/start
 plugins=(
 chriskempson/base16-vim
-preservim/nerdtree
+cohama/lexima.vim
 neoclide/coc.nvim
 neovimhaskell/haskell-vim
-cohama/lexima.vim
+preservim/nerdtree
 ryanoasis/vim-devicons
+sbdchd/neoformat
 tiagofumo/vim-nerdtree-syntax-highlight
 )
 for p in ${plugins[@]}; do git clone --depth 1 "https://github.com/$p.git"; done
 
-vim -u NONE -c "helptags ~/.vim/pack/vendor/start/nerdtree/doc" -c q
 yarn --cwd coc.nvim
-git clone https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
-cd /tmp/haskell-language-server
-stack install.hs hls-8.8.3
-find .vim -type f | while read f ; do cp home/$f ~/$f ; done
+sudo wget -O /usr/share/fonts/roboto-mono-nerd.ttf "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/RobotoMono/Regular/complete/Roboto Mono Nerd Font Complete.ttf"
+sudo fc-cache -fv
 ```
 
-## Optional VS Code:
+## Optionally install VS Code:
 ```sh
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
@@ -94,13 +102,21 @@ sudo dnf check-update
 sudo dnf install code
 ```
 
-# Change WM to i3
+# Change WM to Sway
 ```sh
-sudo dnf install -y lightdm lightdm-gtk-greeter-settings
-sudo systemctl disable gdm
-sudo systemctl enable lightdm
+sudo dnf install sway swaylock swayidle waybar grim slurp wl-clipboard python3-i3ipc
+sudo wget -O /usr/bin/grimshot https://raw.githubusercontent.com/swaywm/sway/master/contrib/grimshot
+sudo chmod +x /usr/bin/grimshot
+```
 
-sudo dnf install -y blueman compton i3 i3lock ImageMagick network-manager-applet scrot @xfce-desktop-environment ulauncher
+## Optionally install Inter font
+```sh
+mkdir /tmp/inter
+cd /tmp/inter
+wget -q https://github.com/rsms/inter/releases/download/v3.15/Inter-3.15.zip
+unzip Inter-*.zip
+sudo mv Inter\ Desktop /usr/local/fonts/inter-desktop
+sudo fc-cache -fv
 ```
 
 # Install Wine
@@ -108,7 +124,8 @@ sudo dnf install -y blueman compton i3 i3lock ImageMagick network-manager-applet
 sudo dnf install -y wine winetricks
 sudo winetricks --self-update
 ```
-Speed up winetricks downloads:
+
+## Optionally speed up winetricks downloads:
 ```sh
 sudo sed -i 's|torify} aria2c|& -x16 -s16 |' /usr/bin/winetricks
 ```
