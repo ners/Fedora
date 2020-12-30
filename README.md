@@ -107,6 +107,7 @@ sudo dnf install code
 sudo dnf install sway swaylock swayidle waybar grim slurp wl-clipboard python3-i3ipc
 sudo wget -O /usr/bin/grimshot https://raw.githubusercontent.com/swaywm/sway/master/contrib/grimshot
 sudo chmod +x /usr/bin/grimshot
+cp -r home/.config/sway home/.config/waybar ~/.config
 ```
 
 ## Optionally install Inter font
