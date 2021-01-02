@@ -104,7 +104,7 @@ sudo dnf install code
 
 # Change WM to Sway
 ```sh
-sudo dnf install sway swaylock swayidle waybar grim slurp wl-clipboard python3-i3ipc
+sudo dnf install sway swaylock swayidle waybar wdisplays grim slurp wl-clipboard python3-i3ipc
 sudo wget -O /usr/bin/grimshot https://raw.githubusercontent.com/swaywm/sway/master/contrib/grimshot
 sudo chmod +x /usr/bin/grimshot
 cp -r home/.config/sway home/.config/waybar ~/.config
@@ -122,14 +122,14 @@ sudo fc-cache -fv
 
 ## Optionally install timed background
 ```sh
-sudo dnf install git golang libXcursor-devel libXmu-devel xorg-x11-xbitmaps
+sudo cp -r home/.local/share/backgrounds/* /usr/share/backgrounds/
+
+sudo dnf install golang libXcursor-devel libXmu-devel xorg-x11-xbitmaps wayland-devel
 git clone --depth 1 https://github.com/xyproto/wallutils /tmp/wallutils
 cd /tmp/wallutils
 make -j
 sudo make PREFIX=/usr/local install
-
-cp -r home/.local/share/backgrounds/* ~/.local/share/backgrounds/
-echo "exec_always killall settimed ; settimed big-sur"
+echo "exec_always killall settimed ; settimed big-sur" >> ~/.config/sway/theme.conf
 ```
 
 # Install Wine
