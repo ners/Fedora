@@ -41,7 +41,7 @@ sudo sed -i 's|EndSection|\tOption "PrimaryGPU" "yes"\nEndSection|' /etc/X11/xor
 # Change shell to ZSH
 ```sh
 sudo dnf install -y zsh zsh-syntax-highlighting
-git clone https://github.com/sindresorhus/pure.git /tmp/pure
+git clone --depth 1 https://github.com/sindresorhus/pure.git /tmp/pure
 sudo cp /tmp/pure/async.zsh /usr/share/zsh/site-functions/async
 sudo cp /tmp/pure/pure.zsh /usr/share/zsh/site-functions/prompt_pure_setup
 chsh -s $(which zsh)
@@ -55,7 +55,7 @@ curl -sSL https://get.haskellstack.org/ | sh
 
 ## Install HLS for IDE integration
 ```sh
-git clone https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
+git clone --depth 1 https://github.com/haskell/haskell-language-server.git /tmp/haskell-language-server
 cd /tmp/haskell-language-server
 stack install.hs hls-8.8.4
 ```
@@ -118,6 +118,18 @@ wget -q https://github.com/rsms/inter/releases/download/v3.15/Inter-3.15.zip
 unzip Inter-*.zip
 sudo mv Inter\ Desktop /usr/local/fonts/inter-desktop
 sudo fc-cache -fv
+```
+
+## Optionally install timed background
+```sh
+sudo dnf install git golang libXcursor-devel libXmu-devel xorg-x11-xbitmaps
+git clone --depth 1 https://github.com/xyproto/wallutils /tmp/wallutils
+cd /tmp/wallutils
+make -j
+sudo make PREFIX=/usr/local install
+
+cp -r home/.local/share/backgrounds/* ~/.local/share/backgrounds/
+echo "exec_always killall settimed ; settimed big-sur"
 ```
 
 # Install Wine

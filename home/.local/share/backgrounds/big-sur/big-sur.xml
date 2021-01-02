@@ -1,0 +1,39 @@
+<background>
+  <starttime>
+    <year>2020</year>
+    <month>01</month>
+    <day>21</day>
+    <hour>07</hour>
+    <minute>00</minute>
+    <second>00</second>
+  </starttime>
+<!-- This animation will start at 7:00. -->
+
+<!-- We start with dawn at 7:00. It will remain up for 8 hours. -->
+<static>
+<duration>28800.0</duration>
+<file>/usr/share/backgrounds/big-sur/Big-Sur-Day.jpg</file>
+</static>
+
+
+<!-- It's 14:00, and we're starting to transition to dusk. Transition completes at 22:00 PM. -->
+<transition type="overlay">
+<duration>28800.0</duration>
+<from>/usr/share/backgrounds/big-sur/Big-Sur-Day.jpg</from>
+<to>/usr/share/backgrounds/big-sur/Big-Sur-Night.jpg</to>
+</transition>
+
+<!-- It's 22:00, we're showing the night till 5:00. -->
+<static>
+<duration>25200.0</duration>
+<file>/usr/share/backgrounds/big-sur/Big-Sur-Night.jpg</file>
+</static>
+
+<!-- It's 5:00, and we're starting to transition to dawn. Transition completes at 7:00. -->
+<transition type="overlay">
+<duration>7200.0</duration>
+</transition>
+<from>/usr/share/backgrounds/big-sur/Big-Sur-Night.jpg</from>
+<to>/usr/share/backgrounds/big-sur/Big-Sur-Day.jpg</to>
+
+</background>
