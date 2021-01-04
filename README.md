@@ -1,5 +1,13 @@
-Fedora setup
-============
+So I've convinced you to install Fedora Workstation
+===================================================
+
+Congratulations on taking the first steps to enlightenment.
+What happens now? Here's everything you need.
+
+Use Fedora Media Writer to create a bootable USB key:
+https://getfedora.org/en/workstation/download/
+
+Or just download the ISO and burn it yourself. Either way, the download is 2 GB, and the USB key should be at least 4 GB in size. 
 
 # Update the system
 If you're on a decent connection, speed up DNF updates:
