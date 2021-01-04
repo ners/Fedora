@@ -32,7 +32,7 @@ sudo dnf install -y aria2 boxes curl dnf-plugins-core direnv entr expect fuse-ex
 ```
 ## Optional GUI tools:
 ```sh
-sudo dnf install -y kitty geary gnome-tweaks mpv novim-qt telegram-desktop transmission-gtk transmission-remote-gtk yaru-theme
+sudo dnf install -y geary gnome-tweaks mpv novim-qt telegram-desktop transmission-gtk transmission-remote-gtk yaru-theme
 ```
 
 ## Optional nVidia driver:
