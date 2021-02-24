@@ -103,6 +103,14 @@ sudo fc-cache -fv
 ```
 
 ## Optionally install VS Code:
+It is strongly recommended to run VSCodium instead of Microsoft's VSCode: https://vscodium.com/
+
+```sh
+sudo rpm --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg
+printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=gitlab.com_paulcarroty_vscodium_repo\nbaseurl=https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg" | sudo tee -a /etc/yum.repos.d/vscodium.repo
+sudo dnf install codium
+```
+If you'd rather trust Microsoft with your computer's wellbeing (yikes), they have an official guide for Fedora: https://code.visualstudio.com/docs/setup/linux#_rhel-fedora-and-centos-based-distributions
 ```sh
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
@@ -150,3 +158,12 @@ sudo winetricks --self-update
 ```sh
 sudo sed -i 's|torify} aria2c|& -x16 -s16 |' /usr/bin/winetricks
 ```
+
+# Other shitty tools
+Avoid installing these untrusted proprietary applications with RPM. Look here for more: https://flathub.org/apps
+- Zoom: `flatpak --user install flathub us.zoom.Zoom`
+- Skype: `flatpak --user install flathub com.skype.Client`
+- MS Teams: `flatpak --user install flathub com.microsoft.Teams`
+- Mattermost: `flatpak --user install com.mattermost.Desktop`
+- Discord: `flatpak --user install flathub com.discordapp.Discord`
+- IntelliJ Idea Community: `flatpak --user install flathub com.jetbrains.IntelliJ-IDEA-Community`
