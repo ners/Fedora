@@ -167,3 +167,4 @@ Avoid installing these untrusted proprietary applications with RPM. Look here fo
 - Mattermost: `flatpak --user install com.mattermost.Desktop`
 - Discord: `flatpak --user install flathub com.discordapp.Discord`
 - IntelliJ Idea Community: `flatpak --user install flathub com.jetbrains.IntelliJ-IDEA-Community`
+- Steam: `flatpak install --user flathub com.valvesoftware.Steam com.valvesoftware.Steam.CompatibilityTool.Proton`
