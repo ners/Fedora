@@ -32,7 +32,7 @@ sudo dnf install -y aria2 boxes curl dnf-plugins-core direnv entr expect fuse-ex
 ```
 ## Optional GUI tools:
 ```sh
-sudo dnf install -y geary gnome-tweaks mpv novim-qt telegram-desktop transmission-gtk transmission-remote-gtk yaru-theme
+sudo dnf install -y geary gnome-tweaks mpv neovim-qt yaru-theme
 ```
 
 ## Optional nVidia driver:
@@ -160,7 +160,12 @@ sudo sed -i 's|torify} aria2c|& -x16 -s16 |' /usr/bin/winetricks
 ```
 
 # Other shitty tools
+Run this once after setting up the system:
+```sh
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo`
+```
 Avoid installing these untrusted proprietary applications with RPM. Look here for more: https://flathub.org/apps
+- Telegram Desktop: `flatpak --user install flathub org.telegram.desktop`
 - Zoom: `flatpak --user install flathub us.zoom.Zoom`
 - Skype: `flatpak --user install flathub com.skype.Client`
 - MS Teams: `flatpak --user install flathub com.microsoft.Teams`
@@ -168,3 +173,4 @@ Avoid installing these untrusted proprietary applications with RPM. Look here fo
 - Discord: `flatpak --user install flathub com.discordapp.Discord`
 - IntelliJ Idea Community: `flatpak --user install flathub com.jetbrains.IntelliJ-IDEA-Community`
 - Steam: `flatpak install --user flathub com.valvesoftware.Steam com.valvesoftware.Steam.CompatibilityTool.Proton`
+- Spotify: `flatpak install --user flathub com.spotify.Client`
