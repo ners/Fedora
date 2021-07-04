@@ -17,7 +17,7 @@ echo max_parallel_downloads=16 | sudo tee -a /etc/dnf/dnf.conf
 ```sh
 sudo dnf upgrade --refresh -y
 source /etc/os-release
-VERSION=33
+VERSION=34
 if [ "$VERSION_ID" -lt $VERSION ] ; then
     sudo dnf install -y dnf-plugin-system-upgrade
     sudo dnf system-upgrade -y download --releasever=$VERSION
